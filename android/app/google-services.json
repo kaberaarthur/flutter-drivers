@@ -1,0 +1,118 @@
+{
+  "project_info": {
+    "project_number": "51746516421",
+    "project_id": "mile-cab-app",
+    "storage_bucket": "mile-cab-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:51746516421:android:a18ef5900132be7e46afac",
+        "android_client_info": {
+          "package_name": "com.example.firebase_tut"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "51746516421-aepl4e2b9svefprqce1qtjldn9da6dcj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIYD2kRxQohHb4I5bbLbML3mfOnx1x5II"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "51746516421-9fllc5tego744oi1574e91oi0vcs0vpm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "51746516421-5ufec75ahrr4hhrjfk6jbperjkghofg3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.firstproject.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:51746516421:android:7e8d45946de25caf46afac",
+        "android_client_info": {
+          "package_name": "com.example.firstproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "51746516421-aepl4e2b9svefprqce1qtjldn9da6dcj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIYD2kRxQohHb4I5bbLbML3mfOnx1x5II"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "51746516421-9fllc5tego744oi1574e91oi0vcs0vpm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "51746516421-5ufec75ahrr4hhrjfk6jbperjkghofg3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.firstproject.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:51746516421:android:bae337339349fb1846afac",
+        "android_client_info": {
+          "package_name": "com.example.flutter_tut_two"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "51746516421-aepl4e2b9svefprqce1qtjldn9da6dcj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIYD2kRxQohHb4I5bbLbML3mfOnx1x5II"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "51746516421-9fllc5tego744oi1574e91oi0vcs0vpm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "51746516421-5ufec75ahrr4hhrjfk6jbperjkghofg3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.firstproject.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
