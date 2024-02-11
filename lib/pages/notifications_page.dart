@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:intl/intl.dart';
 
 class NotificationsPage extends StatelessWidget {
   final String? currentUserId = FirebaseAuth.instance.currentUser?.uid;
@@ -20,7 +21,7 @@ class NotificationsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Notifications"),
-        backgroundColor: Colors.red[700],
+        backgroundColor: Colors.amber[700],
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
@@ -54,11 +55,18 @@ class NotificationsPage extends StatelessWidget {
                       children: <Widget>[
                         Text(data['title'] ?? 'No Title',
                             style: TextStyle(fontWeight: FontWeight.bold)),
-                        SizedBox(height: 5),
+                        SizedBox(height: 1),
                         Text(data['message'] ?? 'No Message'),
-                        SizedBox(height: 5),
-                        Text(data['time'] ?? 'No Time',
-                            style: TextStyle(fontSize: 12, color: Colors.grey)),
+                        SizedBox(height: 1),
+                        Text(
+                          // Inline conversion of Timestamp to formatted String
+                          data['time'] != null
+                              ? DateFormat('yyyy-MM-dd – kk:mm')
+                                  .format((data['time'] as Timestamp).toDate())
+                              : 'No Time',
+                          style:
+                              TextStyle(fontSize: 12, color: Colors.grey[850]),
+                        ),
                       ],
                     ),
                   ),

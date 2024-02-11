@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tut_two/pages/add_vehicle_page.dart';
 import 'package:flutter_tut_two/pages/documents_page.dart';
 import 'package:flutter_tut_two/pages/my_vehicles_page.dart';
+import 'package:flutter_tut_two/pages/notifications_page.dart';
 import 'package:flutter_tut_two/pages/update_profile_page.dart';
 
 class MenuPage extends StatelessWidget {
@@ -52,7 +53,7 @@ class MenuPage extends StatelessWidget {
                   const MyVehiclesPage()),
               const SizedBox(height: 16.0),
               menuItem(context, Icons.notification_add, 'Notifications',
-                  'Recent Updates', const MyVehiclesPage()),
+                  'Recent Updates', NotificationsPage()),
             ],
           ),
         ),
