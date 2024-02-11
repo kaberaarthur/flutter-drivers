@@ -71,7 +71,7 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
         'email': currentUser.email,
       };
       await FirebaseFirestore.instance
-          .collection('users')
+          .collection('drivers')
           .doc(currentUser.uid)
           .set(data);
       // ignore: use_build_context_synchronously

@@ -3,6 +3,7 @@ import 'package:flutter_tut_two/pages/add_vehicle_page.dart';
 import 'package:flutter_tut_two/pages/documents_page.dart';
 import 'package:flutter_tut_two/pages/my_vehicles_page.dart';
 import 'package:flutter_tut_two/pages/notifications_page.dart';
+import 'package:flutter_tut_two/pages/rides_list_page.dart';
 import 'package:flutter_tut_two/pages/update_profile_page.dart';
 
 class MenuPage extends StatelessWidget {
@@ -31,7 +32,7 @@ class MenuPage extends StatelessWidget {
           child: Column(
             children: [
               menuItem(context, Icons.directions_car, 'Rides', 'See new rides',
-                  const UpdateProfilePage()),
+                  RidesListPage()),
               const SizedBox(height: 16.0),
               menuItem(context, Icons.person_add, 'Profile', 'Update Profile',
                   const UpdateProfilePage()),
@@ -44,7 +45,7 @@ class MenuPage extends StatelessWidget {
                   Icons.upload_file_rounded,
                   'Documents',
                   'Personal Documents',
-                  DocumentsPage()), // Replace with your page
+                  const DocumentsPage()), // Replace with your page
               const SizedBox(height: 16.0),
               menuItem(context, Icons.car_rental_sharp, 'Add Vehicle',
                   'List a New Vehicle', const AddVehiclePage()),
