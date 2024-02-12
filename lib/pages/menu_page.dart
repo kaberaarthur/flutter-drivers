@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tut_two/pages/add_vehicle_page.dart';
 import 'package:flutter_tut_two/pages/documents_page.dart';
+import 'package:flutter_tut_two/pages/home_page.dart';
 import 'package:flutter_tut_two/pages/my_vehicles_page.dart';
 import 'package:flutter_tut_two/pages/notifications_page.dart';
 import 'package:flutter_tut_two/pages/rides_list_page.dart';
 import 'package:flutter_tut_two/pages/update_profile_page.dart';
-import 'package:flutter_tut_two/pages/messages_page.dart';
 
 class MenuPage extends StatelessWidget {
   const MenuPage({Key? key}) : super(key: key);
@@ -19,12 +19,12 @@ class MenuPage extends StatelessWidget {
         backgroundColor: Colors.amber[700],
         actions: [
           IconButton(
-            icon: const Icon(Icons.person),
+            icon: const Icon(Icons.house),
             onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => UpdateProfilePage(),
+                  builder: (context) => HomePage(),
                 ),
               );
             },

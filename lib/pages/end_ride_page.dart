@@ -18,7 +18,7 @@ class EndRidePage extends StatefulWidget {
 class _EndRidePageState extends State<EndRidePage> {
   GoogleMapController? mapController;
   LatLng _center = const LatLng(-23.5557714, -46.6395571);
-  LatLng? _destination;
+  LatLng _destination = const LatLng(-23.5557714, -46.6395571);
   late String pickupDescription = ''; // To store pickup description
   late String dropoffDescription = ''; // To store dropoff description
   bool _mapLoaded = false;
