@@ -5,6 +5,7 @@ import 'package:flutter_tut_two/pages/my_vehicles_page.dart';
 import 'package:flutter_tut_two/pages/notifications_page.dart';
 import 'package:flutter_tut_two/pages/rides_list_page.dart';
 import 'package:flutter_tut_two/pages/update_profile_page.dart';
+import 'package:flutter_tut_two/pages/messages_page.dart';
 
 class MenuPage extends StatelessWidget {
   const MenuPage({Key? key}) : super(key: key);
@@ -31,6 +32,9 @@ class MenuPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              menuItem(context, Icons.directions_car, 'Messages',
+                  'Chat with rider', MessagesPage()),
+              const SizedBox(height: 16.0),
               menuItem(context, Icons.directions_car, 'Rides', 'See new rides',
                   RidesListPage()),
               const SizedBox(height: 16.0),

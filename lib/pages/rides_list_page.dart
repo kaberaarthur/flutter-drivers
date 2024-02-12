@@ -1,5 +1,8 @@
+import 'package:url_launcher/url_launcher.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart'; // For Clipboard.setData
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 
 class RidesListPage extends StatefulWidget {
@@ -181,6 +184,7 @@ class _RidesListPageState extends State<RidesListPage> {
   }
 }
 
+// Rider Contact Page
 class RiderContactPage extends StatelessWidget {
   final String documentId;
   final String riderName;
@@ -193,6 +197,16 @@ class RiderContactPage extends StatelessWidget {
     required this.riderPhone,
   }) : super(key: key);
 
+  Future<void> _copyToClipboard(String text, BuildContext context) async {
+    await Clipboard.setData(ClipboardData(text: text));
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Copied to Clipboard'),
+        backgroundColor: Colors.green,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -201,44 +215,90 @@ class RiderContactPage extends StatelessWidget {
         backgroundColor: Colors.amber[700],
       ),
       body: Center(
-        // Centering the card in the middle of the screen
         child: Card(
-          elevation: 4.0, // Adds a slight shadow to the card for depth
-          margin: const EdgeInsets.all(20.0), // Adds margin around the card
+          elevation: 4.0,
+          margin: const EdgeInsets.all(16.0),
           child: Padding(
-            padding: const EdgeInsets.all(20.0), // Padding inside the card
+            padding: const EdgeInsets.all(16.0),
             child: Column(
-              mainAxisSize: MainAxisSize
-                  .min, // Minimizes the card size to wrap its content
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment
-                  .start, // Aligns content to the start of the card
+                  .stretch, // Makes child widgets stretch to fill the card width
               children: <Widget>[
+                SizedBox(height: 16),
                 Text(
-                  'Rider Name:',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline6, // Larger text for the label
+                  'Rider Name',
+                  style: Theme.of(context).textTheme.headline6,
                 ),
                 Text(
                   riderName,
-                  style: Theme.of(context)
-                      .textTheme
-                      .subtitle1, // Slightly smaller text for the name
+                  style: Theme.of(context).textTheme.subtitle1,
                 ),
-                SizedBox(height: 16), // Adds spacing between name and phone
+                SizedBox(height: 16),
                 Text(
-                  'Rider Phone:',
+                  'Rider Phone',
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 Text(
                   riderPhone,
                   style: Theme.of(context).textTheme.subtitle1,
                 ),
+                SizedBox(height: 16),
+                ElevatedButton(
+                  onPressed: () {
+                    debugPrint('Go to Pickup');
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.amber[700],
+                    foregroundColor: Colors.grey[900],
+                    shape: RoundedRectangleBorder(
+                      // Setting the shape
+                      borderRadius: BorderRadius.circular(
+                          4), // Rounded corners with a radius of 4
+                    ),
+                  ),
+                  child: const Text('GO TO PICKUP'),
+                ),
+                SizedBox(height: 24),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment
+                      .spaceEvenly, // Distributes the icons evenly across the row
+                  children: [
+                    _iconButton(
+                      context,
+                      Icons.phone,
+                      'Call',
+                      () => _copyToClipboard(riderPhone, context),
+                    ),
+                    _iconButton(context, Icons.message, 'Message',
+                        () => debugPrint('Message')),
+                    _iconButton(context, Icons.cancel, 'Cancel',
+                        () => debugPrint('Cancel')),
+                  ],
+                ),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+
+  Widget _iconButton(
+      BuildContext context, IconData icon, String label, VoidCallback onTap) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        IconButton(
+          icon: Icon(
+            icon,
+            color: Colors.grey[900],
+          ),
+          color: Theme.of(context).primaryColor,
+          onPressed: onTap,
+        ),
+        Text(label),
+      ],
     );
   }
 }
