@@ -1,3 +1,5 @@
+import 'package:flutter_tut_two/pages/messages_page.dart';
+import 'package:flutter_tut_two/pages/home_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -207,6 +209,38 @@ class RiderContactPage extends StatelessWidget {
     );
   }
 
+  Future<void> _cancelRide(BuildContext context) async {
+    try {
+      // Get a reference to the document
+      final docRef =
+          FirebaseFirestore.instance.collection('rides').doc(documentId);
+
+      // Update the rideStatus field to '1' (canceled)
+      await docRef.update({'rideStatus': '1'});
+
+      // Show a success message and navigate to HomePage
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Ride canceled successfully'),
+          backgroundColor: Colors.green,
+        ),
+      );
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
+    } catch (error) {
+      // Handle any potential errors
+      print('Error canceling ride: $error');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error canceling ride. Please try again.'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -270,10 +304,27 @@ class RiderContactPage extends StatelessWidget {
                       'Call',
                       () => _copyToClipboard(riderPhone, context),
                     ),
-                    _iconButton(context, Icons.message, 'Message',
-                        () => debugPrint('Message')),
-                    _iconButton(context, Icons.cancel, 'Cancel',
-                        () => debugPrint('Cancel')),
+                    _iconButton(
+                      context,
+                      Icons.message,
+                      'Message',
+                      () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MessagesPage(
+                              rideId: documentId,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                    _iconButton(
+                      context,
+                      Icons.delete_sharp,
+                      'Cancel',
+                      () => _cancelRide(context),
+                    ),
                   ],
                 ),
               ],

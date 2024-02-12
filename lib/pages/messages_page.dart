@@ -4,10 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'; // Import for clipboard functionality
 
 class MessagesPage extends StatefulWidget {
-  final String rideId =
-      "zKc3x2RonQ4y1m4VCEE6"; // Pass the ride ID as an argument
+  final String rideId; // Pass the ride ID as an argument
 
-  const MessagesPage({super.key});
+  const MessagesPage({super.key, required this.rideId});
 
   @override
   State<MessagesPage> createState() => _MessagesPageState();
