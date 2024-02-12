@@ -19,10 +19,14 @@ class MenuPage extends StatelessWidget {
         backgroundColor: Colors.amber[700],
         actions: [
           IconButton(
-            icon: const Icon(Icons.menu),
+            icon: const Icon(Icons.person),
             onPressed: () {
-              // Add your hamburger menu functionality here
-              debugPrint('Hamburger menu pressed');
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => UpdateProfilePage(),
+                ),
+              );
             },
           ),
         ],
@@ -32,14 +36,6 @@ class MenuPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              menuItem(
-                  context,
-                  Icons.directions_car,
-                  'Messages',
-                  'Chat with rider',
-                  MessagesPage(
-                    rideId: 'zKc3x2RonQ4y1m4VCEE6',
-                  )),
               const SizedBox(height: 16.0),
               menuItem(context, Icons.directions_car, 'Rides', 'See new rides',
                   RidesListPage()),

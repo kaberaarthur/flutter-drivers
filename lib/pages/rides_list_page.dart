@@ -1,6 +1,7 @@
 import 'package:flutter_tut_two/pages/messages_page.dart';
 import 'package:flutter_tut_two/pages/pickup_page.dart';
 import 'package:flutter_tut_two/pages/home_page.dart';
+import 'package:flutter_tut_two/pages/menu_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -98,15 +99,41 @@ class _RidesListPageState extends State<RidesListPage> {
     if (currentUserId == null) {
       return Scaffold(
         appBar: AppBar(
-            title: Text("Rides List"), backgroundColor: Colors.amber[700]),
-        body: Center(child: Text("You are not logged in.")),
+          title: const Text("Rides List"),
+          centerTitle: true,
+          backgroundColor: Colors.amber[700],
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: () {
+                // Add your hamburger menu functionality here
+                debugPrint('Hamburger menu pressed');
+              },
+            ),
+          ],
+        ),
+        body: const Center(child: Text("You are not logged in.")),
       );
     }
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Rides List"),
+        title: const Text('Rides List'),
+        centerTitle: true,
         backgroundColor: Colors.amber[700],
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MenuPage(),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
