@@ -1,4 +1,5 @@
 import 'package:flutter_tut_two/pages/messages_page.dart';
+import 'package:flutter_tut_two/pages/pickup_page.dart';
 import 'package:flutter_tut_two/pages/home_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -280,7 +281,12 @@ class RiderContactPage extends StatelessWidget {
                 SizedBox(height: 16),
                 ElevatedButton(
                   onPressed: () {
-                    debugPrint('Go to Pickup');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PickupPage(rideId: documentId),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.amber[700],
